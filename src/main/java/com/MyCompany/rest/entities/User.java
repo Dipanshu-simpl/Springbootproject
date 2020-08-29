@@ -1,12 +1,17 @@
 package com.MyCompany.rest.entities;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
+
+//import antlr.collections.List;
 
 @Entity
 @Table(name="user")
@@ -37,6 +42,13 @@ public class User {
 	
 	@Column(name="SSN", length=50, nullable=false, unique=true)
 	private String ssn;
+	
+
+	
+	@OneToMany(mappedBy="user")
+	private List<Order> orders;
+	
+	
 	
 	// Default constructor
 	
@@ -113,9 +125,17 @@ public class User {
 
 	public void setSsn(String ssn) {
 		this.ssn = ssn;
+	}	
+	
+	
+	public List<Order> getOrders() {
+		return orders;
 	}
 
-	
+	public void setOrders(List<Order> orders) {
+		this.orders = orders;
+	}
+
 	// generate toString() method here.
 	@Override
 	public String toString() {

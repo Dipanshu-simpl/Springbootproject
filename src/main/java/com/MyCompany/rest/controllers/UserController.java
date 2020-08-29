@@ -29,7 +29,7 @@ import com.MyCompany.rest.exceptions.UserNotFoundException;
 import com.MyCompany.rest.services.UserService;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/users")
 @Validated
 public class UserController {
 
@@ -40,7 +40,7 @@ public class UserController {
 	
 	// method to getAll Users
 	
-	@GetMapping("/users")
+	@GetMapping()
 	public List<User> getAllUsers()
 	{
 		return userService.getAllUsers();
@@ -48,7 +48,7 @@ public class UserController {
 	
 	// Method to add a createUser
 	
-	@PostMapping("/users")
+	@PostMapping()
 	public ResponseEntity<Void> createUser(@Valid @RequestBody User user,UriComponentsBuilder builder)
 	{
 		try
@@ -67,7 +67,7 @@ public class UserController {
 	
 	// Method to get a user by id.
 	
-	@GetMapping("/users/{id}")
+	@GetMapping("/{id}")
 	public Optional<User> getUserById(@PathVariable("id")  @Min(1)Long id)
 	{
 		try
@@ -83,7 +83,7 @@ public class UserController {
 	
 	// Method to update user by ID
 	
-	@PutMapping("/users/{id}")
+	@PutMapping("/{id}")
 	public User updateUserById(@PathVariable("id") Long id, @RequestBody User user)
 	{
 		try {
@@ -98,7 +98,7 @@ public class UserController {
 	
 	// Delete a user by ID
 	
-	@DeleteMapping("/users/{id}")
+	@DeleteMapping("/{id}")
 	public void deleteUserById(@PathVariable("id") Long id)
 	{
 		 userService.deleteUserById(id);
@@ -106,7 +106,7 @@ public class UserController {
 	
 	// get user by username
 	
-	@GetMapping("/users/byusername/{username}")
+	@GetMapping("/byusername/{username}")
 	public User getUserByUsername(@PathVariable("username") String username) throws UserNameNotFoundException
 	{
 		User user=userService.getUserByUsername(username);
