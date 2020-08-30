@@ -13,12 +13,17 @@ import javax.validation.constraints.Size;
 
 import org.springframework.hateoas.RepresentationModel;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 //import javax.validation.hateoas.ResourceSupport;
 
 //import antlr.collections.List;
 
+// Appling JsonIgnoreProperties at class Level.
 @Entity
 @Table(name="user")
+@JsonIgnoreProperties({"firstname","lastname"})
 public class User extends RepresentationModel{
 	
 	@Id
@@ -45,6 +50,7 @@ public class User extends RepresentationModel{
 	private String role;
 	
 	@Column(name="SSN", length=50, nullable=false, unique=true)
+	@JsonIgnore
 	private String ssn;
 	
 
