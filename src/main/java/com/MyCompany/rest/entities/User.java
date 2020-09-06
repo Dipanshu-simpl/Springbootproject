@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonFilter;
 @Entity
 @Table(name="user")
 //@JsonIgnoreProperties({"firstname","lastname"})
-@JsonFilter(value="userFilter")
+//@JsonFilter(value="userFilter")
 public class User extends RepresentationModel{
 	
 	@Id
