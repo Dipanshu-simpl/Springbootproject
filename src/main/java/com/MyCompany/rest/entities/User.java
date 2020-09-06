@@ -59,7 +59,8 @@ public class User extends RepresentationModel{
 	private List<Order> orders;
 	
 	
-	
+	@Column(name="ADDRESS",length=50)
+	private String address;
 	// Default constructor
 	
 	public User()
@@ -68,7 +69,7 @@ public class User extends RepresentationModel{
 	}
 
 	// args construtor
-	public User(long id, String username, String firstname, String lastname, String email, String role, String ssn) {
+	public User(long id, String username, String firstname, String lastname, String email, String role, String ssn,String address) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -77,6 +78,7 @@ public class User extends RepresentationModel{
 		this.email = email;
 		this.role = role;
 		this.ssn = ssn;
+		this.address=address;
 	}
 	
 	// Getters-setters
@@ -145,11 +147,25 @@ public class User extends RepresentationModel{
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+	
+	public String getAddress()
+	{
+		return address;
+	}
+	public void setAddress(String address)
+	{
+		this.address=address;
+	}
+
+	
+	
+	
 
 	// generate toString() method here.
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", firstname=" + firstname + ", lastname=" + lastname
-				+ ", email=" + email + ", role=" + role + ", ssn=" + ssn + "]";
+				+ ", email=" + email + ", role=" + role + ", ssn=" + ssn + ", orders=" + orders + ", address=" + address
+				+ "]";
 	}
 }
