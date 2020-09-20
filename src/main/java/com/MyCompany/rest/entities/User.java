@@ -13,30 +13,34 @@ import javax.validation.constraints.Size;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import com.fasterxml.jackson.annotation.JsonFilter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 //import javax.validation.hateoas.ResourceSupport;
 
 //import antlr.collections.List;
 
 // Appling JsonIgnoreProperties at class Level.
+@ApiModel(description="This model is to create a user")
 @Entity
 @Table(name="user")
-//@JsonIgnoreProperties({"firstname","lastname"})
-//@JsonFilter(value="userFilter")
+//@Import(BeanValidatorPluginsConfiguration.class)
+
 public class User extends RepresentationModel{
 	
+	@ApiModelProperty(notes="Automatically generated unique id", required=true,position=1)
 	@Id
 	@GeneratedValue
 	private long id;
 	
 	
+	@ApiModelProperty(notes="username should start as flname",example="dmagoo",required=false,position=2)
 	@NotEmpty(message="username is mandatory field. Please provide the username")
 	@Column(name="USER_NAME", length=50, nullable=false, unique=true)
 	private String username;
 	
 	
-	@Size(min=2, message="Firstname should have 2 characters")
+	@Size(min=2, max=50,message="Firstname should have 2 characters")
 	@Column(name="FIRST_NAME" , length=50, nullable=false)
 	private String firstname;
 	

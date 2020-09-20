@@ -43,7 +43,6 @@ public class UserUriVersioningController
 		return userDtov1;
 	}
 	
-	
 	@GetMapping("/v2.0/{id}")
 	public UserDtoV2 getUserById2(@PathVariable("id") @Min(1) Long id) throws UserNotFoundException
 	{
